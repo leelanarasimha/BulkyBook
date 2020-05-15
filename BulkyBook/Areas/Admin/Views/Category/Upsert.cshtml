@@ -1,0 +1,35 @@
+﻿@model BulkyBook.Models.Category
+@{
+    ViewData["Title"] = "Create";
+    var title = "Create Category";
+    if (Model.Id != 0) {
+        title = "Update Category";
+    }
+}
+
+<h1>@title</h1>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" >
+            
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control"/>
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+
+            <div>
+                @if (Model.Id != 0)
+                {
+                    <partial name="_EditAndBackToList" model="@Model.Id"/>
+                }
+                else { 
+                    <partial name="_CreateAndBackToList" />
+                }
+              
+            </div>
+        </form>
+    </div>
+</div>
